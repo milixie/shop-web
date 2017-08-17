@@ -1,2 +1,11 @@
-# shop-web
-A shop cart pages web
+# 一个VUE 项目
+
+### 安装
+
+```
+npm i
+```
+
+
+
+
