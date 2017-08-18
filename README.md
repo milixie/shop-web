@@ -6,6 +6,16 @@
 npm i
 ```
 
+### 编译
 
+```
+npm run watch
+```
+
+### server run
+
+```
+node server/app.js
+```
 
 
