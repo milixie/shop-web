@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100px !important;
+}
+
+body {
+  font-size: 0.14rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+.flex {
+  @include flex;
+}
+
+.vflex {
+  @include flex(row);
+}
+
+@for $i from 0 through 6 {
+  .flex#{$i} {
+    @include nFlex($i);
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+
+.scroll-y {
+  @include scroll;
+}
+
+.scroll-x {
+  @include scroll(overflow-x);
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}

@@ -1,0 +1,22 @@
+@mixin flex($dir:'') {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  @if $dir!='' {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+  }
+}
+
+@mixin nFlex($i: 0) {
+  flex: $i;
+  -webkit-flex: $i;
+  -webkit-box-flex: $i;
+}
+
+@mixin scroll($dir: overflow-y) {
+  #{$dir}: auto;
+  -webkit-overflow-scrolling: touch;
+}
