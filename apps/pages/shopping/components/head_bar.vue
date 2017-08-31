@@ -34,6 +34,7 @@
 </template>
 
 <style lang="scss" scope rel="stylesheet/scss">
+  @import "../../../../client/static/style/base/variables";
   .head {
     width: 100%;
     position: relative;
@@ -75,7 +76,7 @@
       }
       .love {
         .collect {
-          background: #ff6666;
+          background: $main-color;
           width: 0.8rem;
           height: 0.25rem;
           line-height: 0.28rem;
@@ -99,12 +100,12 @@
         left: -0.1rem;
         top: -0.01rem;
         font-size: 0.18rem;
-        color: #ff6666;
+        color: $main-color;
       }
       ul {
         li {
           .title {
-            background: #ff6666;
+            background: $main-color;
             border-radius: 0.02rem;
             padding: 0.02rem;
             color: #fff;

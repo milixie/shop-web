@@ -14,11 +14,12 @@
 </template>
 
 <style lang="scss" scope rel="stylesheet/scss">
+  @import "../../../../client/static/style/base/variables";
   .home {
     .combo {
       .block {
         .title {
-          background: #ff6666;
+          background: $main-color;
           padding: 0.02rem;
           text-align: center;
           color: #fff;

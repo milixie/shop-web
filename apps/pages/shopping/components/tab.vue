@@ -7,6 +7,7 @@
 </template>
 
 <style lang="scss" scope rel="stylesheet/scss">
+  @import "../../../../client/static/style/base/variables";
   .tab {
     background: #fff;
     .sub-tab {
@@ -14,8 +15,18 @@
       text-align: center;
       position: relative;
       &.active {
-        color: #ff6666;
+        color: $main-color;
         font-weight: bold;
+        &:after {
+          position: absolute;
+          left: 50%;
+          bottom: 0;
+          margin-left: -25%;
+          content: '';
+          width: 50%;
+          height: 0.02rem;
+          background: $main-color;
+        }
       }
     }
   }
