@@ -971,6 +971,7 @@ body {
 }
 .tab {
   background: #fff;
+  box-shadow: 0 0.01rem 0 0 rgba(0, 0, 0, 0.06);
 }
 .tab .sub-tab {
   padding: 0.1rem;
@@ -991,9 +992,27 @@ body {
   height: 0.02rem;
   background: #ff6666;
 }
+.home {
+  margin-top: 0.01rem;
+}
 .home .combo .block .title {
-  background: #ff6666;
+  background: #ffcccc;
   padding: 0.02rem;
   text-align: center;
-  color: #fff;
+}
+.goods {
+  margin-top: 0.01rem;
+}
+.category {
+  width: 1rem;
+  border-right: 0.01rem solid #eee;
+}
+.category .sub-category {
+  border-bottom: 1px solid #eee;
+  padding: 0.15rem 0;
+  text-align: center;
+}
+.category .sub-category.active {
+  background: #fff;
+  color: #ff6666;
 }

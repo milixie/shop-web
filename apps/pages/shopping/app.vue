@@ -5,6 +5,7 @@
       <search/>
       <tab :is_active="is_active" @switch="switchTab"/>
       <home v-if="is_active === 0"/>
+      <goods v-if="is_active === 1"/>
     </div>
   </div>
 </template>
@@ -26,6 +27,7 @@ import HeadBar from './components/head_bar.vue';
 import Search from './components/search.vue';
 import Tab from './components/tab.vue';
 import Home from './components/home.vue';
+import Goods from './components/goods.vue';
 export default {
   data() {
     return {
@@ -42,6 +44,6 @@ export default {
       this.is_active = index;
     }
   },
-  components: {HeadBar, Search, Tab, Home}
+  components: {HeadBar, Search, Tab, Home, Goods}
 }
 </script>

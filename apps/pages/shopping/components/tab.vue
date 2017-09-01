@@ -10,6 +10,7 @@
   @import "../../../../client/static/style/base/variables";
   .tab {
     background: #fff;
+    box-shadow: 0 0.01rem 0 0 rgba(0, 0, 0, 0.06);
     .sub-tab {
       padding: 0.1rem;
       text-align: center;
