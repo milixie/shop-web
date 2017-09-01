@@ -1,18 +1,18 @@
 <template>
   <ul class="category vflex scroll-y">
-    <li class="sub-category" :class="{active: id === 0}" id="0" @click="switchCategory(0)">
+    <li class="sub-category flex" :class="{active: id === 0}" id="0" @click="switchCategory(0)">
       <i class="icon-campaign"></i>
       <span>今日特惠</span>
     </li>
-    <li class="sub-category" :class="{active: id === 1}" id="1" @click="switchCategory(1)">
+    <li class="sub-category flex" :class="{active: id === 1}" id="1" @click="switchCategory(1)">
       <i class="icon-campaign"></i>
       <span>今日特惠</span>
     </li>
-    <li class="sub-category" :class="{active: id === 2}" id="2" @click="switchCategory(2)">
+    <li class="sub-category flex" :class="{active: id === 2}" id="2" @click="switchCategory(2)">
       <i class="icon-campaign"></i>
       <span>今日特惠</span>
     </li>
-    <li class="sub-category" :class="{active: id === 3}" id="3" @click="switchCategory(3)">
+    <li class="sub-category flex" :class="{active: id === 3}" id="3" @click="switchCategory(3)">
       <i class="icon-campaign"></i>
       <span>今日特惠</span>
     </li>
@@ -22,7 +22,7 @@
 <style lang="scss" scope rel="stylesheet/scss">
   @import "../../../../../client/static/style/base/variables";
   .category{
-    width: 1rem;
+    width: 0.85rem;
     border-right: 0.01rem solid #eee;
     .sub-category {
       border-bottom: 1px solid #eee;

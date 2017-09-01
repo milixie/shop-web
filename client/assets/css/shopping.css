@@ -1004,7 +1004,7 @@ body {
   margin-top: 0.01rem;
 }
 .category {
-  width: 1rem;
+  width: 0.85rem;
   border-right: 0.01rem solid #eee;
 }
 .category .sub-category {
@@ -1015,4 +1015,149 @@ body {
 .category .sub-category.active {
   background: #fff;
   color: #ff6666;
+}
+.goods-list .group .title {
+  background: #f6f6f6;
+  padding: 0.08rem 0.1rem;
+}
+.goods-list .group .list {
+  background: #fff;
+}
+.goods-list .group .list .group-item {
+  padding: 0.1rem;
+}
+.goods-list .group .list .group-item .img {
+  width: 0.6rem;
+  height: 0.6rem;
+}
+.goods-list .group .list .group-item .content {
+  position: relative;
+  padding-left: 0.1rem;
+}
+.goods-list .group .list .group-item .content .name {
+  font-size: 0.16rem;
+  margin-bottom: 0.05rem;
+}
+.goods-list .group .list .group-item .content .detail {
+  font-size: 0.12rem;
+  color: #ccc;
+  margin-bottom: 0.05rem;
+}
+.goods-list .group .list .group-item .content .price {
+  color: #ff6666;
+  font-size: 0.2rem;
+}
+.goods-list .group .list .group-item .content .price span {
+  font-size: 0.12rem;
+}
+.goods-list .group .list .group-item .content .select {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.picker {
+  width: 0.75rem;
+  height: 0.25rem;
+  line-height: 0.25rem;
+}
+.picker .circular {
+  width: 0.25rem;
+  height: 0.25rem;
+  line-height: 0.23rem;
+  text-align: center;
+  border: 0.01rem solid #ffcccc;
+  border-radius: 50%;
+  background: #ff6666;
+  position: relative;
+}
+.picker .circular .circular-btn {
+  display: inline-block;
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  left: -50%;
+  top: -50%;
+}
+.picker .circular i {
+  color: #fff;
+  font-weight: bold;
+}
+.store {
+  background: #fff;
+  margin: 0.1rem;
+  border-radius: 0.02rem;
+  box-shadow: 0 0.01rem 0 0 rgba(0, 0, 0, 0.06);
+  position: relative;
+  padding: 0.2rem;
+}
+.store .store-info {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 0.2rem;
+}
+.store .store-info label {
+  display: inline-block;
+  width: 1rem;
+  min-width: 1rem;
+  line-height: 1.5em;
+}
+.store .store-info label i {
+  position: relative;
+  left: -0.05rem;
+  color: #ff6666;
+}
+.store .store-info span {
+  line-height: 1.5em;
+}
+.cart {
+  width: 100%;
+  height: 0.45rem;
+  background: #fff;
+}
+.cart .price-info {
+  line-height: 0.35rem;
+}
+.cart .price-info .circle {
+  position: relative;
+  left: 0.08rem;
+  top: -0.08rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  line-height: 0.45rem;
+  text-align: center;
+  background: #009966;
+  border-radius: 50%;
+}
+.cart .price-info .circle i {
+  color: #fff;
+  font-size: 0.24rem;
+}
+.cart .price-info .circle .number {
+  position: absolute;
+  right: -0.04rem;
+  top: -0.04rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  line-height: 0.2rem;
+  text-align: center;
+  background: #ff6666;
+  border-radius: 50%;
+  color: #fff;
+}
+.cart .price-info .total {
+  margin-left: 0.2rem;
+}
+.cart .price-info .total .price {
+  color: #ff6666;
+  font-size: 0.24rem;
+  position: relative;
+  top: 0.02rem;
+  left: 0.04rem;
+}
+.cart .settle {
+  width: 1.2rem;
+  line-height: 0.44rem;
+  text-align: center;
+  background: #ff6666;
+  color: #fff;
 }

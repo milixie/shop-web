@@ -4,12 +4,14 @@
       <div class="title">面膜</div>
       <div class="list">
         <div class="group-item flex">
-          <img src="http://7xj5et.com1.z0.glb.clouddn.com/gallery/img/15.jpg" alt="">
-          <div class="flex1">
+          <img class="img" src="http://7xj5et.com1.z0.glb.clouddn.com/gallery/img/15.jpg" alt="">
+          <div class="content flex1">
             <div class="name">鲜补水面膜</div>
             <div class="detail">月销量234 | 好评率98%</div>
-            <div class="price">￥96.9</div>
-            <picker/>
+            <div class="price"><span>￥</span>96.9</div>
+            <div class="select">
+              <picker :number="1"/>
+            </div>
           </div>
         </div>
       </div>
@@ -20,7 +22,47 @@
 <style lang="scss" scope rel="stylesheet/scss">
   @import "../../../../../client/static/style/base/variables";
   .goods-list {
-
+    .group {
+      .title {
+        background: #f6f6f6;
+        padding: 0.08rem 0.1rem;
+      }
+      .list {
+        background: #fff;
+        .group-item {
+          padding: 0.1rem;
+          .img {
+            width: 0.6rem;
+            height: 0.6rem;
+          }
+          .content {
+            position: relative;
+            padding-left: 0.1rem;
+            .name {
+              font-size: 0.16rem;
+              margin-bottom: 0.05rem;
+            }
+            .detail {
+              font-size: 0.12rem;
+              color: #ccc;
+              margin-bottom: 0.05rem;
+            }
+            .price {
+              color: $main-color;
+              font-size: 0.2rem;
+              span {
+                font-size: 0.12rem;
+              }
+            }
+            .select {
+              position: absolute;
+              right: 0;
+              bottom: 0;
+            }
+          }
+        }
+      }
+    }
   }
 </style>
 
