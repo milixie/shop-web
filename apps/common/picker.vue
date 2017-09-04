@@ -56,15 +56,14 @@
       return {}
     },
     methods: {
-      plus() {
+      plus(el) {
         const value = this.number + 1;
-        this.number = value;
         this.$emit('input', value);
+        this.$emit('getPos', el);
       },
       reduce() {
         if (this.number === 0) return;
         const value = this.number - 1;
-        this.number = value;
         this.$emit('input', value);
       }
     }

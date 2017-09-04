@@ -10,17 +10,19 @@
             <div class="detail">月销量234 | 好评率98%</div>
             <div class="price"><span>￥</span>96.9</div>
             <div class="select">
-              <picker :number="1"/>
+              <picker :number="n" @getPos="getIcoPos" @input="changeNumber"/>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <svg-ico :balls="balls" :move_balls="move_balls"/>
   </div>
 </template>
 
 <style lang="scss" scope rel="stylesheet/scss">
   @import "../../../../../client/static/style/base/variables";
+
   .goods-list {
     .group {
       .title {
@@ -68,15 +70,42 @@
 
 <script>
   import Picker from '../../../../common/picker.vue'
+  import SvgIco from '../svg.vue'
   export default {
     name: 'goods-list',
     data() {
       return {
+        n: 1,
+        balls: [{
+          show: false,
+          id: 0
+        }, {
+          show: false,
+          id: 1
+        }, {
+          show: false,
+          id: 2
+        }, {
+          show: false,
+          id: 3
+        }],
+        move_balls: []
       }
     },
     methods: {
-
+      getIcoPos(el) {
+        this.balls.forEach(item => {
+          if (!item.show) {
+            item.el = el;
+            item.show = true;
+            this.move_balls.push(item);
+          }
+        });
+      },
+      changeNumber(count) {
+        this.n = count;
+      }
     },
-    components: {Picker}
+    components: {Picker, SvgIco}
   }
 </script>

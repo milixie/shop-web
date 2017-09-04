@@ -12,7 +12,11 @@ const renderer = {
       {name: 'x5-page-mode', content: 'app'}
     ],
     link: [{rel: 'shortcut icon', type: 'image/x-icon', href: '/static/image/favicon.ico'}],
-    script: [{src: '/assets/vendor.bundle.js', defer: true}]
+    script: [{
+      src: '/static/script/flex.js', defer: true
+    }, {
+      src: '/assets/vendor.bundle.js', defer: true
+    }]
   },
   global: {},
   plugins: [path.resolve(__dirname, '../apps/vue/plugin.js')]
