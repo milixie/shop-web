@@ -1,29 +1,24 @@
 <template>
-  <ul class="category vflex scroll-y">
-    <li class="sub-category flex" :class="{active: id === 0}" id="0" @click="switchCategory(0)">
-      <i class="icon-campaign"></i>
-      <span>今日特惠</span>
-    </li>
-    <li class="sub-category flex" :class="{active: id === 1}" id="1" @click="switchCategory(1)">
-      <i class="icon-campaign"></i>
-      <span>今日特惠</span>
-    </li>
-    <li class="sub-category flex" :class="{active: id === 2}" id="2" @click="switchCategory(2)">
-      <i class="icon-campaign"></i>
-      <span>今日特惠</span>
-    </li>
-    <li class="sub-category flex" :class="{active: id === 3}" id="3" @click="switchCategory(3)">
-      <i class="icon-campaign"></i>
-      <span>今日特惠</span>
+  <ul class="category vflex scroll-y" :class="{'block': cart.length > 0}">
+    <li class="sub-category"
+        :class="{active: item.idx === current_id}"
+        @click="switchCategory(item.idx)"
+        v-for="item in category"
+        :key="item.idx">
+      <i v-show="item.idx === -1" class="icon-campaign"></i>
+      <span>{{item.name}}</span>
     </li>
   </ul>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss" scoped rel="stylesheet/scss">
   @import "../../../../../client/static/style/base/variables";
   .category{
     width: 0.85rem;
     border-right: 0.01rem solid #eee;
+    &.block {
+      padding-bottom: 0.45rem;
+    }
     .sub-category {
       border-bottom: 1px solid #eee;
       padding: 0.15rem 0;
@@ -37,17 +32,27 @@
 </style>
 
 <script>
+  import {mapState, mapMutations} from 'vuex';
   export default {
     name: 'category',
     data() {
       return {
-        id: 0
+      }
+    },
+    mounted() {
+      this.id = this.category && this.category[0].idx;
+    },
+    computed: {
+      ...mapState(['current_id', 'cart']),
+      category() {
+        return this.$store.getters.category_show;
       }
     },
     methods: {
+      ...mapMutations(['updateId']),
       switchCategory(idx) {
-        if (idx === this.id) return;
-        this.id = idx;
+        if (idx === this.current_id) return;
+        this.updateId(idx);
       }
     }
   }

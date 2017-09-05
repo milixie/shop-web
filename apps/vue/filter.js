@@ -15,6 +15,14 @@ function filter(Vue) {
     }
     return value;
   });
+  Vue.filter('unitTurn', (value) => {
+    if (value && (typeof +value === 'number' && !isNaN(+value))) {
+      if (value / 10000 >= 1) {
+        return `${value / 10000}万`
+      }
+      return value;
+    }
+  });
 }
 
 export default filter;

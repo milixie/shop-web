@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss" scoped rel="stylesheet/scss">
   @import "../../client/static/style/base/variables";
   .picker {
     width: 0.75rem;

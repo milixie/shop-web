@@ -1,29 +1,35 @@
 <template>
-  <div class="goods-list scroll-y flex1 vflex">
-    <div class="group">
-      <div class="title">面膜</div>
+  <div class="goods-list scroll-y flex1 vflex" :class="{'block': cart.length > 0}">
+    <div class="group" v-for="item in group" :key="item.idx" v-show="current_id === item.idx">
+      <div class="title">{{item.name}}</div>
       <div class="list">
-        <div class="group-item flex">
-          <img class="img" src="http://7xj5et.com1.z0.glb.clouddn.com/gallery/img/15.jpg" alt="">
+        <div class="group-item flex"
+             v-for="sub_item in item.content"
+             :key="sub_item.name">
+          <img :src="sub_item.head_img" alt="" class="img">
           <div class="content flex1">
-            <div class="name">鲜补水面膜</div>
-            <div class="detail">月销量234 | 好评率98%</div>
-            <div class="price"><span>￥</span>96.9</div>
+            <div class="name">{{sub_item.name}}</div>
+            <div class="detail">月销量{{sub_item.sale}} | 好评率{{sub_item.comment_rate}}</div>
+            <div class="price"><span>￥</span>{{sub_item.price | cash}}</div>
             <div class="select">
-              <picker :number="n" @getPos="getIcoPos" @input="changeNumber"/>
+              <picker :number="sub_item.amount" @getPos="getIcoPos" @input="count => cartHandler(sub_item, count)"/>
             </div>
           </div>
         </div>
       </div>
+      <div class="alert"> 没有更多啦 </div>
     </div>
     <svg-ico :balls="balls" :move_balls="move_balls"/>
   </div>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss" scoped rel="stylesheet/scss">
   @import "../../../../../client/static/style/base/variables";
 
   .goods-list {
+    &.block{
+      padding-bottom: 0.45rem;
+    }
     .group {
       .title {
         background: #f6f6f6;
@@ -65,17 +71,25 @@
         }
       }
     }
+    .alert {
+      padding: 0.1rem;
+      text-align: center;
+      font-size: 0.12rem;
+      color: #aaa;
+    }
   }
 </style>
 
 <script>
-  import Picker from '../../../../common/picker.vue'
-  import SvgIco from '../svg.vue'
+  import _ from 'lodash';
+  import {mapState, mapMutations} from 'vuex';
+  import Picker from '../../../../common/picker.vue';
+  import SvgIco from '../svg.vue';
   export default {
     name: 'goods-list',
+    props: ['current_id'],
     data() {
       return {
-        n: 1,
         balls: [{
           show: false,
           id: 0
@@ -92,7 +106,14 @@
         move_balls: []
       }
     },
+    computed: {
+      ...mapState(['cart', 'category', 'current_id']),
+      group() {
+        return this.$store.getters.category_show;
+      }
+    },
     methods: {
+      ...mapMutations(['updateCart', 'addToCart', 'removeFromCart']),
       getIcoPos(el) {
         this.balls.forEach(item => {
           if (!item.show) {
@@ -102,8 +123,19 @@
           }
         });
       },
-      changeNumber(count) {
-        this.n = count;
+      cartHandler(item, count) {
+        if (count === 1) {
+          const find_cart = this.cart.find(sub_cart => sub_cart.id === item.id);
+          if (find_cart) {
+            this.updateCart({item, count});
+          } else {
+            this.addToCart(item);
+          }
+        } else if (count === 0) {
+          this.removeFromCart(item);
+        } else if (count > 1) {
+          this.updateCart({item, count});
+        }
       }
     },
     components: {Picker, SvgIco}

@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss" scoped rel="stylesheet/scss">
   @import "../../../../client/static/style/base/variables";
 
   .svg {
@@ -16,14 +16,14 @@
       position: fixed;
       left: 0.4rem;
       bottom: 0.2rem;
-      transition: all .6s cubic-bezier(0.49, -0.29, 0.75, 0.41);
+      transition: all .3s cubic-bezier(0.49, -0.29, 0.75, 0.41);
       .ico {
         display: inline-block;
         width: 0.1rem;
         height: 0.1rem;
         border-radius: 50%;
         background: $main-color;
-        transition: all .6s linear
+        transition: all .3s linear
       }
     }
   }

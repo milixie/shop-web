@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss" scoped rel="stylesheet/scss">
   @import "../../../../client/static/style/base/variables";
   .home {
     margin-top: 0.01rem;

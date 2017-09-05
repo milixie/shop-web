@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss" scoped rel="stylesheet/scss">
   .goods {
     margin-top: 0.01rem;
   }
@@ -17,8 +17,12 @@
   export default {
     name: 'goods',
     data() {
-      return {}
+      return {
+
+      }
     },
-    components: {Category, GoodsList}
+    components: {Category, GoodsList},
+    methods: {
+    }
   }
 </script>

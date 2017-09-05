@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss">
   .search {
     background: #eee;
     padding: 0.05rem 0.1rem;

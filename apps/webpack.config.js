@@ -4,7 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');  //webpack中将样式抽取成独立的文件的插件
+const ExtractTextPlugin = require('extract-text-webpack-plugin');//webpack中将样式抽取成独立的文件的插件
 const autoprefixer = require('autoprefixer');  //为样式自动添加前缀的插件
 const entry = require('./entry');
 const base = path.resolve(__dirname, './lib/base.js');
@@ -15,7 +15,8 @@ const config = {
     vendor: [
       base,
       'vue',
-      'vuex'
+      'vuex',
+      'vue-easy-renderer/dist/plugin'
     ]
   },
   output: {

@@ -6,7 +6,7 @@
   </ul>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss">
   @import "../../../../client/static/style/base/variables";
   .tab {
     background: #fff;

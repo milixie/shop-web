@@ -1,30 +1,36 @@
 <template>
   <div class="head vflex">
-    <img src="http://7xj5et.com1.z0.glb.clouddn.com/shop/head.png" alt="" class="bg">
+    <img :src="store_info.bg" alt="" class="bg">
     <div class="content flex flex1">
       <div class="header">
-        <img src="http://7xj5et.com1.z0.glb.clouddn.com/gallery/img/10.jpg" alt="">
+        <img :src="store_info.logo" alt="">
       </div>
       <div class="info flex1">
-        <div class="title">补水天使俱乐部</div>
-        <div class="detail">满两件或购满299包邮</div>
-        <div class="detail">一律发顺丰</div>
+        <div class="title">{{store_info.name}}</div>
+        <div class="detail">{{store_info.free_mail}}</div>
+        <div class="detail">一律发
+          <span v-for="(mail, index) in store_info.mail_supplier" :key="mail.name">
+            {{mail.name}}
+            <span v-if="store_info.mail_supplier && index !== store_info.mail_supplier.length - 1">、</span>
+          </span>
+        </div>
       </div>
       <div class="love vflex">
-        <div class="collect center" :class="{'no-collect': is_collect}" @click="collect">
-          <span v-if="is_collect">已收藏</span>
+        <div class="collect center" :class="{'no-collect': user.collect_status}" @click="collect">
+          <span v-if="user.collect_status">已收藏</span>
           <span v-else>收藏</span>
         </div>
-        <div class="people">5.1万人已收藏</div>
+        <div class="people">{{store_info.collect_total | unitTurn}}人已收藏</div>
       </div>
     </div>
     <div class="activity flex"><i class="icon-volume volume"></i>
       <ul class="flex1">
-        <li>
+        <li v-if="full_minus">
           <span class="title">满减</span>
-          <span>满199减100</span></li>
+          <span>满{{full_minus.full}}减{{full_minus.minus}}</span>
+        </li>
       </ul>
-      <div class="more">
+      <div class="more" v-if="activity.full_minus && activity.full_minus.length > 1">
         <span>更多活动</span>
         <i class="icon-right-arrow arrow arrow-first"></i>
         <i class="icon-right-arrow arrow arrow-last"></i>
@@ -33,11 +39,12 @@
   </div>
 </template>
 
-<style lang="scss" scope rel="stylesheet/scss">
+<style lang="scss"  rel="stylesheet/scss">
   @import "../../../../client/static/style/base/variables";
   .head {
     width: 100%;
     position: relative;
+    z-index: 0;
     overflow: hidden;
     padding: 0.15rem 0.1rem 0.05rem 0.15rem;
     border-bottom: 0.01rem solid #ddd;
@@ -137,11 +144,28 @@
 </style>
 
 <script>
+  import {mapState} from 'vuex';
   export default {
     name: 'head',
     data() {
       return {
         is_collect: true
+      }
+    },
+    computed: {
+      ...mapState([
+        'store_info',
+        'user',
+        'activity']),
+      full_minus() {
+        const full_minus = this.activity.full_minus;
+        if (full_minus && full_minus.length > 0) {
+          return {
+            full: full_minus[0].full,
+            minus: full_minus[0].minus
+          }
+        }
+        return false;
       }
     },
     methods: {
