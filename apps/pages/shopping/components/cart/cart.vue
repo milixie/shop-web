@@ -8,7 +8,7 @@
         </div>
         <span class="total"> 总计：¥<span class="price">{{total.total_price | cash}}</span></span>
       </div>
-      <div class="settle">去结算</div>
+      <div class="settle" @click="place">去结算</div>
     </div>
     <cart-detail v-if="show"/>
     <popup :show="show" @closeMask="closeMask"></popup>
@@ -83,7 +83,7 @@
 </style>
 
 <script>
-  import {mapState} from 'vuex';
+  import {mapState, mapActions} from 'vuex';
   import Popup from './../../../../common/popup.vue';
   import CartDetail from './cart_detail.vue';
   export default {
@@ -111,11 +111,15 @@
       }
     },
     methods: {
+      ...mapActions(['placeOrder']),
       CartDetailToggle() {
         this.show = !this.show;
       },
       closeMask() {
         this.show = false;
+      },
+      place() {
+        this.placeOrder();
       }
     }
   }

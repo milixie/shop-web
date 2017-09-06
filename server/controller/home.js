@@ -12,6 +12,14 @@ const controller = {
         name: '顺丰'
       }],
       free_mail: '满2件或者购满299即可包邮',
+      product_number: 210343,
+      month_sale: 1612,
+      start_time: 28800000,
+      end_time: 79200000,
+      tel: 40088888888,
+      address: '北京市朝阳区798艺术区1324号',
+      intro: ' 补水天使俱乐部成立于2015年3月12号，由腾讯、携程领头投资天使轮1000万美金，一经推出就受到广大观众的喜爱，尤其是深受每天忙于工作的美女白领的喜爱，同时，补水天使俱乐部也受到了广大男士的关注，因为我们推出了基于男士肌肤专门补水的特效功能',
+      other: '店铺购满299元或者购满2件即可包邮，但不含港澳台、新疆、西藏等偏远地区，快递一律发顺丰，保证您所购宝贝尽快送达，祝您购物愉快！'
     };
     render_data.user = {
       collect_status: true
@@ -176,6 +184,10 @@ const controller = {
       id: 4002
     }]
     res.vueRender('./../../apps/pages/shopping/app.vue', render_data);
+  },
+  placeOrder(req, res) {
+    const query = req.body;  //请求拿到的参数
+    return res.json({status: 'ok'});
   }
 };
 

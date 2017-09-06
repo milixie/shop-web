@@ -42,7 +42,6 @@
     methods: {
       beforeEnter(el){ //这个方法的执行是因为这是一个vue的监听事件
         let count = this.balls.length;
-        console.log(unit.remToPx(0.4));
         while (count --) {
           let ball = this.balls[count];
           if (ball.show) {

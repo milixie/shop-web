@@ -18,4 +18,10 @@ npm run watch
 node server/app.js
 ```
 
+### 一些插件的使用
+
+```
+body-parser
+```
+
 

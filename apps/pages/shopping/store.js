@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import request from './../../lib/request';
 import _ from 'lodash';
 
 Vue.use(Vuex);
@@ -63,7 +63,18 @@ const options = {
       state.current_id = id;
     }
   },
-  actions: {},
+  actions: {
+    async placeOrder({state}) {
+      const url = '/order';
+      const params = {
+        cart: state.cart
+      };
+      const {data} = await request.post(url, params);
+      if (data && data.status === 'ok') {
+
+      }
+    }
+  },
   plugin: {}
 };
 

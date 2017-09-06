@@ -87,7 +87,6 @@
   import SvgIco from '../svg.vue';
   export default {
     name: 'goods-list',
-    props: ['current_id'],
     data() {
       return {
         balls: [{

@@ -2,35 +2,35 @@
   <ul class="store flex1 scroll-y">
     <li class="store-info flex">
       <label><i class="icon-shop"></i>商品数量：</label>
-      <span>1234件</span>
+      <span>{{store_info.product_number}}件</span>
     </li>
     <li class="store-info flex">
       <label><i class="icon-bag"></i>月销量：</label>
-      <span>123件</span>
+      <span>{{store_info.month_sale}}件</span>
     </li>
     <li class="store-info flex">
       <label><i class="icon-users"></i>收藏人数：</label>
-      <span>5.1万</span>
+      <span>{{store_info.collect_total | unitTurn}}</span>
     </li>
     <li class="store-info flex">
       <label><i class="icon-time"></i>营业时间：</label>
-      <span>00:00 ~ 24:00</span>
+      <span>{{work_time.start}}~{{work_time.end}}</span>
     </li>
     <li class="store-info flex">
       <label><i class="icon-phone1"></i>门店电话：</label>
-      <span>40008000</span>
+      <span><a href="tel:store_info.tel">{{store_info.tel}}</a></span>
     </li>
     <li class="store-info flex" @click="openMap">
       <label><i class="icon-location"></i>门店地址：</label>
-      <span>北京市朝阳区798艺术区东门12号</span>
+      <span>{{store_info.address}}</span>
     </li>
     <li class="store-info flex">
       <label><i class="icon-dish"></i>店铺介绍：</label>
-      <span> 补水天使俱乐部成立于2015年3月12号，由腾讯、携程领头投资天使轮1000万美金，一经推出就受到广大观众的喜爱，尤其是深受每天忙于工作的美女白领的喜爱，同时，补水天使俱乐部也受到了广大男士的关注，因为我们推出了基于男士肌肤专门补水的特效功能</span>
+      <span>{{store_info.intro}}</span>
     </li>
     <li class="store-info flex">
       <label><i class="icon-grade3"></i>其他信息：</label>
-      <span>店铺购满299元或者购满2件即可包邮，但不含港澳台、新疆、西藏等偏远地区，快递一律发顺丰，保证您所购宝贝尽快送达，祝您购物愉快！</span>
+      <span>{{store_info.other}}</span>
     </li>
   </ul>
 </template>
@@ -68,10 +68,27 @@
 </style>
 
 <script>
+  import {mapState} from 'vuex';
+  import dateFnsFormat from 'date-fns/format';
+  import dateFnsRange from 'date-fns/difference_in_calendar_days';
+  import dateFnsStartDay from 'date-fns/start_of_day';
   export default {
     name: 'store',
     data() {
       return {}
+    },
+    computed: {
+      ...mapState(['store_info']),
+      work_time() {
+        const {start_time, end_time} = this.store_info;
+        const today = dateFnsStartDay(new Date()).getTime();
+        const start = dateFnsFormat(today + start_time, 'HH:mm');
+        const end = dateFnsFormat(today + end_time, 'HH:mm');
+        return {
+          start,
+          end
+        };
+      }
     },
     methods: {
       openMap() {
