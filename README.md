@@ -24,4 +24,10 @@ node server/app.js
 body-parser
 ```
 
+### sql
+
+```
+brew services restart mysql
+```
+
 

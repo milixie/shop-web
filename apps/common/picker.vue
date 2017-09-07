@@ -1,11 +1,11 @@
 <template>
   <div class="picker center">
-    <div class="reduce circular left" @click="reduce" v-show="number > 0">
+    <div class="reduce circular left" @click.stop="reduce" v-show="number > 0">
       <i class="icon-subtract"></i>
       <a href="javascript:void(0)" class="circular-btn"></a>
     </div>
     <span class="number" v-show="number > 0">{{number}}</span>
-    <div class="plus circular right" @click="plus">
+    <div class="plus circular right" @click.stop="plus">
       <i class="icon-add"></i>
       <a href="javascript:void(0)" class="circular-btn"></a>
     </div>

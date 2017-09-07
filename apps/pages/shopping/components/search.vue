@@ -1,7 +1,11 @@
 <template>
   <div class="search flex">
     <i class="icon-search search-icon"></i>
-    <input type="search" placeholder="请输入商品名称"class="search-box flex1">
+    <input type="search"
+           :value="shop_name"
+           placeholder="请输入商品名称"
+           class="search-box flex1"
+           @input="getInputVal">
   </div>
 </template>
 
@@ -30,10 +34,20 @@
 </style>
 
 <script>
+  import {mapMutations} from 'vuex';
   export default {
     name: 'search',
     data() {
-      return {}
+      return {
+        shop_name: ''
+      }
+    },
+    methods: {
+      ...mapMutations(['searchInput']),
+      getInputVal(e) {
+        const val = e.target.value;
+        this.searchInput(val);
+      }
     }
   }
 </script>

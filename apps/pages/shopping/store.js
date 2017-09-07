@@ -2,18 +2,21 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import request from './../../lib/request';
 import _ from 'lodash';
+import pinyin from 'pinyin';
 
 Vue.use(Vuex);
 
 const options = {
   state: {
+    home_page: {},
     store_info: {},
     user: {},
     activity: {},
     category: [],
     special_product: [],
     cart: [],
-    current_id: -1
+    current_id: -1,
+    search_val: ''
   },
   getters: {
     category_show: state => {
@@ -28,6 +31,18 @@ const options = {
       }
       category.map(item => {
         item.content.map(sub_item => {
+          const spell_full_arr = pinyin(sub_item.name, {style: pinyin.STYLE_NORMAL});
+          const spell_initials_arr = pinyin(sub_item.name, {style: pinyin.STYLE_FIRST_LETTER});
+          let spell_full = '';
+          spell_full_arr.forEach(spell => {
+            spell_full += spell[0];
+          });
+          let spell_initials = '';
+          spell_initials_arr.forEach(letter => {
+            spell_initials += letter[0];
+          });
+          sub_item.spell_full = spell_full;
+          sub_item.spell_initials = spell_initials;
           const find_cart = cart.find(sub_cart => sub_cart.id === sub_item.id);
           if (find_cart) {
             sub_item.amount = find_cart.amount;
@@ -61,6 +76,9 @@ const options = {
     },
     updateId(state, id) {
       state.current_id = id;
+    },
+    searchInput(state, val) {
+      state.search_val = val;
     }
   },
   actions: {

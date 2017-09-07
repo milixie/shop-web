@@ -182,7 +182,36 @@ const controller = {
       comment_rate: '97%',
       price: 990,
       id: 4002
-    }]
+    }];
+    render_data.home_page = {
+      bg_img: 'http://7xj5et.com1.z0.glb.clouddn.com/shop/timg.jpeg',
+      group: [{
+        title: '鲜补水面膜系列',
+        group_list: [{
+          show_img: 'http://7xj5et.com1.z0.glb.clouddn.com/shop/main.png',
+        }, {
+          show_img: 'http://7xj5et.com1.z0.glb.clouddn.com/shop/head.jpg',
+        }]
+      }, {
+        title: '鲜补水植物精华系列',
+        group_list: [{
+          show_img: 'http://7xj5et.com1.z0.glb.clouddn.com/shop/main.png',
+        }, {
+          show_img: 'http://7xj5et.com1.z0.glb.clouddn.com/shop/head.jpg',
+        }]
+      }, {
+        title: '鲜补水眼霜系列',
+        group_list: [{
+          show_img: 'http://7xj5et.com1.z0.glb.clouddn.com/shop/main.png',
+        }, {
+          show_img: 'http://7xj5et.com1.z0.glb.clouddn.com/shop/head.jpg',
+        }]
+      }]
+    };
+    res.vueRender('./../../apps/pages/shopping/app.vue', render_data);
+  },
+  detail(req, res) {
+    const render_data = {};
     res.vueRender('./../../apps/pages/shopping/app.vue', render_data);
   },
   placeOrder(req, res) {

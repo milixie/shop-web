@@ -248,6 +248,11 @@ h6 {
 html {
   font-size: 200px;
 }
+@media screen and (min-width: 768px) {
+html {
+    font-size: 150px !important;
+}
+}
 body {
   font-size: 0.14rem;
   -webkit-text-size-adjust: 100%;
@@ -869,6 +874,7 @@ body {
   padding: 0.15rem 0.1rem 0.05rem 0.15rem;
   border-bottom: 0.01rem solid #ddd;
   box-shadow: 0 0.01rem 0 0 rgba(0, 0, 0, 0.06);
+  background: #f3c9da;
 }
 .head .bg {
   position: absolute;
@@ -996,13 +1002,19 @@ body {
   height: 0.02rem;
   background: #ff6666;
 }
-.home[data-v-df878bca] {
+.home {
   margin-top: 0.01rem;
 }
-.home .combo .block .title[data-v-df878bca] {
+.home .main img {
+  width: 100%;
+}
+.home .combo .block .title {
   background: #ffcccc;
   padding: 0.02rem;
   text-align: center;
+}
+.home .combo .block .pic .img {
+  width: 100%;
 }
 .goods[data-v-4ec9d94a] {
   margin-top: 0.01rem;
@@ -1281,4 +1293,107 @@ body {
 .trans-leave-to {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+}
+.goods-list.block[data-v-91fdfdbc] {
+  padding-bottom: 0.45rem;
+}
+.goods-list .group .title[data-v-91fdfdbc] {
+  background: #f6f6f6;
+  padding: 0.08rem 0.1rem;
+}
+.goods-list .group .list[data-v-91fdfdbc] {
+  background: #fff;
+}
+.goods-list .group .list .group-item[data-v-91fdfdbc] {
+  padding: 0.1rem;
+}
+.goods-list .group .list .group-item .img[data-v-91fdfdbc] {
+  width: 0.6rem;
+  height: 0.6rem;
+}
+.goods-list .group .list .group-item .content[data-v-91fdfdbc] {
+  position: relative;
+  padding-left: 0.1rem;
+}
+.goods-list .group .list .group-item .content .name[data-v-91fdfdbc] {
+  font-size: 0.16rem;
+  margin-bottom: 0.05rem;
+}
+.goods-list .group .list .group-item .content .detail[data-v-91fdfdbc] {
+  font-size: 0.12rem;
+  color: #ccc;
+  margin-bottom: 0.05rem;
+}
+.goods-list .group .list .group-item .content .price[data-v-91fdfdbc] {
+  color: #ff6666;
+  font-size: 0.2rem;
+}
+.goods-list .group .list .group-item .content .price span[data-v-91fdfdbc] {
+  font-size: 0.12rem;
+}
+.goods-list .group .list .group-item .content .select[data-v-91fdfdbc] {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.goods-list .alert[data-v-91fdfdbc] {
+  padding: 0.1rem;
+  text-align: center;
+  font-size: 0.12rem;
+  color: #aaa;
+}
+.detail-shop {
+  width: 100%;
+  height: 100%;
+}
+.detail-shop .slide {
+  height: 2rem;
+  overflow: hidden;
+}
+.detail-shop .slide img {
+  width: 100%;
+}
+.detail-shop .price-info {
+  padding: 0.1rem;
+  background: #ff6666;
+  color: #fff;
+}
+.detail-shop .price-info .price span {
+  font-size: 0.26rem;
+}
+.detail-shop .price-info .cart .add {
+  padding: 0.1rem;
+  background: #fff;
+  border-radius: 0.04rem;
+  color: #ff6666;
+}
+.detail-shop .other {
+  padding: 0.1rem;
+}
+.detail-shop .other .intro {
+  line-height: 1.5em;
+  text-indent: 2em;
+}
+.detail-shop .other .comment {
+  margin-top: 0.2rem;
+}
+.detail-shop .other .comment .title {
+  font-size: 0.16rem;
+  color: #ff6666;
+}
+.detail-shop .other .comment li {
+  border-bottom: 0.01rem solid #eee;
+  padding: 0.15rem;
+  line-height: 1.5em;
+  background: #fff;
+  margin: 0.1rem 0;
+}
+.detail-shop .other .comment li p {
+  color: #ff6666;
+  font-size: 0.15rem;
+  margin-bottom: 0.1rem;
+}
+.detail-shop .other .comment li span {
+  text-indent: 2em;
+  display: inline-block;
 }

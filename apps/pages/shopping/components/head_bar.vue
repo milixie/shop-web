@@ -49,6 +49,7 @@
     padding: 0.15rem 0.1rem 0.05rem 0.15rem;
     border-bottom: 0.01rem solid #ddd;
     box-shadow: 0 0.01rem 0 0 rgba(0, 0, 0, 0.06);
+    background: #f3c9da;
     .bg {
       position: absolute;
       left: 0;

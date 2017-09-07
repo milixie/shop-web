@@ -1,24 +1,22 @@
 <template>
   <div class="goods-list scroll-y flex1 vflex" :class="{'block': cart.length > 0}">
-    <div class="group" v-for="item in group" :key="item.idx" v-show="current_id === item.idx">
-      <div class="title">{{item.name}}</div>
+    <div class="group" v-for="item in group" :key="item.idx">
       <div class="list">
-        <div class="group-item flex"
-             v-for="sub_item in item.content"
-             :key="sub_item.name" @click.prevent="viewDetail">
-          <img :src="sub_item.head_img" alt="" class="img">
+        <div class="group-item flex">
+          <img :src="item.head_img" alt="" class="img">
           <div class="content flex1">
-            <div class="name">{{sub_item.name}}</div>
-            <div class="detail">月销量{{sub_item.sale}} | 好评率{{sub_item.comment_rate}}</div>
-            <div class="price"><span>￥</span>{{sub_item.price | cash}}</div>
+            <div class="name">{{item.name}}</div>
+            <div class="detail">月销量{{item.sale}} | 好评率{{item.comment_rate}}</div>
+            <div class="price"><span>￥</span>{{item.price | cash}}</div>
             <div class="select">
-              <picker :number="sub_item.amount" @getPos="getIcoPos" @input="count => cartHandler(sub_item, count)"/>
+              <picker :number="item.amount" @getPos="getIcoPos" @input="count => cartHandler(item, count)"/>
             </div>
           </div>
         </div>
       </div>
-      <div class="alert"> 没有更多啦 </div>
     </div>
+    <div class="alert" v-if="group.length > 0"> 没有更多啦 </div>
+    <div class="alert" v-else> 没找到相关商品 </div>
     <svg-ico :balls="balls" :move_balls="move_balls"/>
   </div>
 </template>
@@ -106,9 +104,20 @@
       }
     },
     computed: {
-      ...mapState(['cart', 'category', 'current_id']),
+      ...mapState(['cart', 'category', 'current_id', 'search_val']),
       group() {
-        return this.$store.getters.category_show;
+        const group = _.cloneDeep(this.$store.getters.category_show);
+        const total_shop = [];
+        group.forEach(item => {
+          item.content.forEach(sub_item => {
+            total_shop.push(sub_item);
+          })
+        });
+        const result = total_shop.filter(item => {
+          const searchRegex = new RegExp(this.search_val, 'i');
+          return searchRegex.test(item.name) || searchRegex.test(item.spell_full) || searchRegex.test(item.spell_initials);
+        });
+        return result;
       }
     },
     methods: {
@@ -136,9 +145,8 @@
           this.updateCart({item, count});
         }
       },
-      viewDetail() {
-        console.log(111);
-        this.$router.push({name: 'detail'});
+      watch() {
+
       }
     },
     components: {Picker, SvgIco}

@@ -8,6 +8,13 @@ html {
   font-size: 200px;
 }
 
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 150px!important;
+  }
+}
+
 body {
   font-size: 0.14rem;
   -webkit-text-size-adjust: 100%;

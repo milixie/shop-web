@@ -1,22 +1,26 @@
 <template>
   <div class="home scroll-y flex1">
-    <div class="main"><img src="http://7xj5et.com1.z0.glb.clouddn.com/shop/timg.jpeg" alt=""></div>
+    <div class="main"><img :src="home_page.bg_img" alt=""></div>
     <div class="combo">
-      <div class="block">
-        <div class="title">【鲜补水面膜系列】</div>
-        <ul>
-          <li><a href=""><img src="http://7xj5et.com1.z0.glb.clouddn.com/shop/main.png" alt=""></a></li>
-          <li><a href=""><img src="http://7xj5et.com1.z0.glb.clouddn.com/shop/head.jpg" alt=""></a></li>
+      <div class="block" v-for="item in home_page.group" :key="item.title">
+        <div class="title">【{{item.title}}】</div>
+        <ul class="pic" v-for="sub_item in item.group_list" :key="sub_item.show_img">
+          <li><img class="img" :src="sub_item.show_img" alt=""></li>
         </ul>
       </div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss">
   @import "../../../../client/static/style/base/variables";
   .home {
     margin-top: 0.01rem;
+    .main {
+      img {
+        width: 100%;
+      }
+    }
     .combo {
       .block {
         .title {
@@ -24,16 +28,25 @@
           padding: 0.02rem;
           text-align: center;
         }
+        .pic {
+          .img {
+            width: 100%;
+          }
+        }
       }
     }
   }
 
 </style>
 <script>
+  import {mapState} from 'vuex';
   export default {
     name: 'home',
     data() {
       return {}
+    },
+    computed: {
+      ...mapState(['home_page'])
     }
   }
 </script>
