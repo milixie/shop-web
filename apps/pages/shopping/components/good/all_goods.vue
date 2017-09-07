@@ -2,7 +2,7 @@
   <div class="goods-list scroll-y flex1 vflex" :class="{'block': cart.length > 0}">
     <div class="group" v-for="item in group" :key="item.idx">
       <div class="list">
-        <div class="group-item flex">
+        <div class="group-item flex" @click.prevent="viewDetail">
           <img :src="item.head_img" alt="" class="img">
           <div class="content flex1">
             <div class="name">{{item.name}}</div>
@@ -145,8 +145,8 @@
           this.updateCart({item, count});
         }
       },
-      watch() {
-
+      viewDetail() {
+        this.$router.push({name: 'detail'});
       }
     },
     components: {Picker, SvgIco}

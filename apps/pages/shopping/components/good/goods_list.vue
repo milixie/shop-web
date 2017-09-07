@@ -137,7 +137,6 @@
         }
       },
       viewDetail() {
-        console.log(111);
         this.$router.push({name: 'detail'});
       }
     },
