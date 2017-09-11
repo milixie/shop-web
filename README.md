@@ -1,6 +1,6 @@
 # 一个VUE 项目
 
-在线 [demo](http://7xj5et.com1.z0.glb.clouddn.com/shop/shop.html)
+在线 [demo](http://7xj5et.com1.z0.glb.clouddn.com/shop/shop.html)， 请在手机上看
 
 ### 安装
 
